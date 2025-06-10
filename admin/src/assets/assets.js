@@ -67,7 +67,7 @@ import parcel_icon from './parcel_icon.png'
 import profile_image from './profile_image.png'
 
 
-export const url = 'http://localhost:4000';
+export const url = 'https://food-delivery-system-backend-pe5c.onrender.com';
 
 export const assets = {
     logo,
