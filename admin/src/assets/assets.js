@@ -66,13 +66,6 @@ import logout_icon from './logout_icon.png'
 import parcel_icon from './parcel_icon.png'
 import profile_image from './profile_image.png'
 
-<<<<<<< HEAD
-export const url = 'http://localhost:4000';
-=======
-
-export const url = 'https://food-delivery-system-backend-pe5c.onrender.com';
->>>>>>> e07c2c3b355ece0bf6317ba57017a9907abee076
-
 export const assets = {
     logo,
     basket_icon,

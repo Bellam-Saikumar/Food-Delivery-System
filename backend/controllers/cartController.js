@@ -11,7 +11,7 @@ const addToCart = async (req, res) => {
         }
 
         const userData = await userModel.findOne({ _id: userId });
-
+        
         if (!userData) {
             return res.status(404).json({ success: false, message: "User not found" });
         }
