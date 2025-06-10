@@ -1,0 +1,137 @@
+.my-orders {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 0 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.my-orders h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: black;
+}
+
+.order-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #fafafa;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.order-card h3 {
+  margin-top: 0;
+  color: black;
+  word-break: break-word;
+}
+
+.order-card p {
+  margin: 8px 0;
+  color: black;
+  font-size: 1rem;
+}
+
+.order-card ul {
+  list-style: disc inside;
+  padding-left: 0;
+  margin: 10px 0;
+  color: #444;
+}
+
+.order-card ul li {
+  margin: 4px 0;
+}
+
+.order-card h4 {
+  margin-bottom: 8px;
+  color: #222;
+  font-weight: 600;
+}
+
+/* 🔵 Order Box Image */
+.order-box {
+  position: absolute;
+  margin-top: 40px;
+  top: 50px;
+  right: 70px;
+  width: 120px;
+  pointer-events: none;
+}
+
+/* 🔵 Track Button */
+.track-btn {
+  margin-top: 8px;
+  padding: 6px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.track-btn:hover {
+  background-color: #0056b3;
+}
+
+/* 🔽 Responsive Design 🔽 */
+@media (max-width: 768px) {
+  .my-orders {
+    padding: 0 15px;
+  }
+
+  .order-card {
+    padding: 15px;
+  }
+
+  .order-card p {
+    font-size: 0.95rem;
+  }
+
+  .order-card h3 {
+    font-size: 1rem;
+  }
+
+  .order-box {
+    width: 80px;
+    top: 15px;
+    right: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .my-orders {
+    padding: 0 10px;
+  }
+
+  .order-card {
+    padding: 12px;
+  }
+
+  .order-card p {
+    font-size: 0.9rem;
+  }
+
+  .order-card h3 {
+    font-size: 0.95rem;
+  }
+
+  .order-card h4 {
+    font-size: 0.95rem;
+  }
+
+  .order-box {
+    width: 80px;
+    top: 20px;
+    right: 30px;
+  }
+
+  .track-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+  }
+}

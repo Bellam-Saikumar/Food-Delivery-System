@@ -1,0 +1,85 @@
+.food-display {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.food-display h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+/* 🔍 Search bar */
+.navbar-search-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 2px 6px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  background-color: #fff;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto 30px auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-search-container input {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 1rem;
+  text-align: center;
+  padding: 8px;
+}
+
+.navbar-search-container img {
+  width: 22px;
+  height: 22px;
+  margin-right:20px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.navbar-search-container img:hover {
+  transform: scale(1.1);
+}
+
+/* 🍽️ Food grid */
+.food-display-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+/* 🧁 No results message */
+.food-display-list p {
+  text-align: center;
+  font-size: 1rem;
+  color: #777;
+}
+
+/* 📱 Responsive adjustments */
+@media (max-width: 600px) {
+  .navbar-search-container {
+    flex-direction: row;
+    padding: 6px 12px;
+    gap: 8px;
+  }
+
+  .navbar-search-container input {
+    font-size: 0.95rem;
+  }
+
+  .navbar-search-container img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .food-display h2 {
+    font-size: 1.4rem;
+  }
+}

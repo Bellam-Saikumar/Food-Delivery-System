@@ -1,0 +1,41 @@
+/* Navbar.css */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #ffffff; /* Change to your preferred background color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow effect */
+    position:fixed;       /* Changed from sticky to fixed */
+    top: 0;
+    left: 0;
+    width: 100%;           /* Ensure full width */
+    z-index: 1000;
+}
+
+.logo {
+    height: 28px; /* Adjust based on your logo's aspect ratio */
+    width: auto;
+    cursor: pointer;
+}
+.logo-tile p{
+ padding-left: 12px;
+ font-weight:bold;
+ 
+}
+
+.profile {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+/* Optional hover effects */
+.logo:hover, .profile:hover {
+    opacity: 0.8;
+    transform: scale(1.2);
+    transition: all 0.2s ease-in-out;
+}

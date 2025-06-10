@@ -1,0 +1,91 @@
+.place-order {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.place-order-left,
+.place-order-right {
+  flex: 1;
+  min-width: 300px;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.multi-fields {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.cart-total {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cart-total h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #444;
+}
+
+.cart-total-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+.cart-total-details b {
+  font-weight: 600;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 1rem 0;
+}
+
+ button {
+  padding: 0.9rem;
+  background-color: tomato;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cart-total button:hover {
+  background-color: rgb(252, 51, 15);
+}
+

@@ -1,0 +1,128 @@
+/* General container */
+.add {
+    max-width: 600px;
+    margin: 100px auto 40px auto;
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Flex utilities */
+.flex-call {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Upload section */
+.add-image-upload {
+    align-items: flex-start;
+}
+
+.add-image-upload label {
+    cursor: pointer;
+    margin-top: 10px;
+    display: inline-block;
+    max-width: 120px;
+}
+
+.add-image-upload img {
+    width: 100%;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+}
+
+.add-image-upload img:hover {
+    transform: scale(1.05);
+}
+
+/* Input fields */
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border 0.2s ease;
+    background-color: #fafafa;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #4a90e2;
+    outline: none;
+    background-color: #fff;
+}
+
+/* Category and price layout */
+.add-category-price {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.add-category,
+.add-price {
+    flex: 1;
+}
+
+/* Button */
+.add-btn {
+    padding: 12px 0;
+    background-color: tomato;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-btn:hover {
+    background-color: rgb(252, 75, 43);;
+}
+
+.add-product-description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.add-product-description p {
+    font-weight: 600;
+    margin: 0;
+    font-size: 15px;
+    color: #333;
+}
+
+.add-product-description textarea {
+    resize: vertical;
+    min-height: 120px;
+    max-height: 300px;
+    padding: 12px 14px;
+    font-size: 15px;
+    font-family: 'Segoe UI', sans-serif;
+    border: 1.5px solid #ccc;
+    border-radius: 8px;
+    background-color: #fafafa;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.add-product-description textarea:focus {
+    border-color: #4a90e2;
+    background-color: #fff;
+    outline: none;
+}
