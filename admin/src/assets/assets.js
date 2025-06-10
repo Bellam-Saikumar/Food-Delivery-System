@@ -66,6 +66,9 @@ import logout_icon from './logout_icon.png'
 import parcel_icon from './parcel_icon.png'
 import profile_image from './profile_image.png'
 
+
+export const url = 'https://food-delivery-system-backend-qtgw.onrender.com';
+
 export const assets = {
     logo,
     basket_icon,
