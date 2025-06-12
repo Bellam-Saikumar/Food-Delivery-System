@@ -126,3 +126,48 @@ select:focus {
     background-color: #fff;
     outline: none;
 }
+
+
+/* Responsive for 982px and below */
+@media (max-width: 982px) {
+  .add {
+   
+    padding: 25px;
+
+  }
+
+  .add-category-price {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+/* Responsive for 415px and below */
+@media (max-width: 420px) {
+  .add {
+    padding: 20px;
+    margin: 110px 30px 40px auto;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  textarea,
+  select {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+
+  .add-btn {
+    font-size: 15px;
+    padding: 10px 0;
+  }
+
+  .add-image-upload label {
+    max-width: 100px;
+  }
+
+  .add-product-description textarea {
+    font-size: 14px;
+    min-height: 100px;
+  }
+}
