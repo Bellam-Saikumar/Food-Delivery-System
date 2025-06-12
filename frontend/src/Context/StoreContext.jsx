@@ -2,13 +2,15 @@ import { createContext, useState, useEffect } from "react";
 export const StoreContext = createContext(null);
 import axios from "axios";
 
- const StoreContextProvider = (props) =>{
-    const [cartItems, setCartItems] = useState({})
-    const url = "https://food-delivery-system-backend-qtgw.onrender.com";
-    
-    const [token, setToken] = useState("");
-    const [food_list, setFood_list] = useState([]);
-    
+const StoreContextProvider = (props) =>{
+  const [cartItems, setCartItems] = useState({})
+  
+  const url = "http://localhost:4000";
+  
+const [token, setToken] = useState("");
+const [food_list, setFood_list] = useState([]);
+const isLoggedIn = !!token;
+  
 
     const addToCart =async (itemId)=>{
         if(!cartItems[itemId]){
@@ -79,6 +81,7 @@ import axios from "axios";
         url,
         token,
         setToken,
+        isLoggedIn,
     }
     return(
         <StoreContext.Provider value={contextValue} >
