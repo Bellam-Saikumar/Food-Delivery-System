@@ -1,12 +1,22 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useRef } from "react"; // <-- added useRef
 import "./PlaceOrder.css";
 import { StoreContext } from "../../Context/StoreContext";
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import confetti from "canvas-confetti"; // <-- import confetti
 
 function PlaceOrder() {
-  const { subtotal, total, delivery, cartItems, url, token, food_list, setCartItems } = useContext(StoreContext);
-   const navigate = useNavigate();
+  const {
+    subtotal,
+    total,
+    delivery,
+    cartItems,
+    url,
+    token,
+    food_list,
+    setCartItems,
+  } = useContext(StoreContext);
+  const navigate = useNavigate();
 
   const [address, setAddress] = useState({
     firstName: "",
@@ -17,10 +27,12 @@ function PlaceOrder() {
     state: "",
     zip: "",
     country: "",
-    phone: ""
+    phone: "",
   });
 
   const [loading, setLoading] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false); // <-- NEW
+  const canvasRef = useRef(null); // <-- NEW
 
   const handleInputChange = (e) => {
     setAddress({ ...address, [e.target.name]: e.target.value });
@@ -29,68 +41,106 @@ function PlaceOrder() {
   const handlePlaceOrder = async (e) => {
     e.preventDefault();
 
-    // Check if cart is empty
     const cartIsEmpty = Object.values(cartItems).every((qty) => qty <= 0);
     if (cartIsEmpty) {
       alert("Your cart is empty. Please add some items before placing an order.");
       return;
     }
 
-    // Confirm mock payment
     const confirmPayment = window.confirm("Do you want to proceed with payment?");
     if (!confirmPayment) return;
 
     const orderItems = Object.keys(cartItems).map((id) => {
-      const food = food_list.find(item => item._id === id);
+      const food = food_list.find((item) => item._id === id);
       return {
         itemId: id,
         name: food?.name || "Unknown",
         quantity: cartItems[id],
-        price: food?.price || 0
+        price: food?.price || 0,
       };
     });
 
     const fullAddress = {
       ...address,
-      full: `${address.street}, ${address.city}, ${address.state}, ${address.zip}, ${address.country}`
+      full: `${address.street}, ${address.city}, ${address.state}, ${address.zip}, ${address.country}`,
     };
 
     try {
-  setLoading(true);
-  console.log("Sending order request...");
+      setLoading(true);
 
-  await axios.post(
-    `${url}/api/order`,
-    {
-      items: orderItems,
-      amount: total,
-      address: fullAddress,
-      payment: true // simulate success
-    },
-    {
-      headers: {
-        token: token
-      }
+      await axios.post(
+        `${url}/api/order`,
+        {
+          items: orderItems,
+          amount: total,
+          address: fullAddress,
+          payment: true,
+        },
+        {
+          headers: {
+            token: token,
+          },
+        }
+      );
+
+      // ✅ Show confetti
+      const myConfetti = confetti.create(canvasRef.current, {
+        resize: true,
+        useWorker: true,
+      });
+
+      myConfetti({
+        particleCount: 150,
+        spread: 90,
+        origin: { y: 0.6 },
+      });
+
+      // ✅ Show success message
+      setShowSuccess(true);
+
+      // Reset state
+      setCartItems({});
+      setAddress({});
+      
+      // Optionally redirect after few seconds
+      setTimeout(() => {
+        setShowSuccess(false);
+        navigate("/MyOrders");
+      }, 4000);
+    } catch (err) {
+      console.error("Order placement error:", err.response?.data || err.message);
+      alert(`Failed to place order: ${err.response?.data?.message || err.message}`);
+    } finally {
+      setLoading(false);
     }
-  );
-
-  console.log("Order request succeeded");
-
-  alert("Order placed and payment successful!");
-  setCartItems({});
-  setAddress({ /* reset form */ });
-  navigate("/MyOrders");
-  
-} catch (err) {
-  console.error("Order placement error:", err.response?.data || err.message);
-  alert(`Failed to place order: ${err.response?.data?.message || err.message}`);
-} finally {
-  console.log("Setting loading to false");
-  setLoading(false);
-}
   };
 
   return (
+    <>
+      {/* Confetti Canvas */}
+      <canvas ref={canvasRef} style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", pointerEvents: "none", zIndex: 999 }} />
+
+      {/* Success Message */}
+      {showSuccess && (
+        <div style={{
+          position: "fixed",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          background: "#fff",
+          padding: "40px 60px",
+          borderRadius: "12px",
+          boxShadow: "0 0 20px rgba(0,0,0,0.3)",
+          zIndex: 1000,
+          fontSize: "24px",
+          fontWeight: "bold",
+          color: "#28a745",
+          textAlign: "center"
+        }}>
+          🎉 Payment Successful! <br /> Order Placed.
+        </div>
+      )}
+
     <form className="place-order" onSubmit={handlePlaceOrder}>
       <div className="place-order-left">
         <p className="title">Delivery Information</p>
@@ -190,6 +240,7 @@ function PlaceOrder() {
         </div>
       </div>
     </form>
+    </>
   );
 }
 
